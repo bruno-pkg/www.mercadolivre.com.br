@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento PIX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0f1624;
+            --bg-card: #141d2f;
+            --text-primary: #fff;
+            --text-secondary: #8892b0;
+            /* Novas cores em tons de Rosa */
+            --accent-pink: #ff007f; 
+            --accent-light-pink: #ff66b2;
+            --border-color: #334155;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .checkout-container {
+            display: flex;
+            gap: 30px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .left-panel, .right-panel {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        .left-panel { flex: 1.5; }
+        .right-panel { flex: 1; display: flex; flex-direction: column; }
+
+        h2 {
+            margin-top: 0;
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        /* Botão atualizado para gradiente rosa */
+        .btn {
+            width: 100%;
+            background: linear-gradient(45deg, var(--accent-pink), var(--accent-light-pink));
+            padding: 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            font-weight: 600;
+            color: #fff; /* Texto branco para contrastar com o rosa */
+            font-size: 16px;
+            transition: filter 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn:hover:not(:disabled) {
+            filter: brightness(1.2);
+        }
+
+        .terms {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Link dos termos em rosa */
+        .terms a {
+            color: var(--accent-light-pink);
+            text-decoration: none;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-total {
+            font-weight: 600;
+            font-size: 18px;
+            color: var(--accent-light-pink); /* Destaque no total */
+        }
+
+        #timer {
+            background: #334155;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: var(--accent-light-pink); /* Timer em rosa */
+        }
+
+        @media (max-width: 768px) {
+            .checkout-container { flex-direction: column; }
+        }
+
+        .product-info { display: flex; align-items: center; gap: 15px; }
+        .product-logo { width: 40px; height: 40px; border-radius: 8px; object-fit: cover; }
+    </style>
+</head>
+<body>
+    <div class="checkout-container">
+        <div class="left-panel">
+            <h2>Checkout</h2>
+            <div id="initial-view">
+                <div class="terms">
+                    <input type="checkbox" id="terms-checkbox">
+                    <label for="terms-checkbox">Confirmo a leitura e entendo todos os <a href="#">Termos de compra</a></label>
+                </div>
+                <button id="generate-pix-btn" class="btn">GERAR CÓDIGO PIX</button>
+            </div>
+            <p class="footer-notice"><strong>Aviso Importante:</strong> A ParadisePag é responsável apenas pelo processamento dos pagamentos.</p>
+        </div>
+
+        <div class="right-panel">
+            <div style="flex-grow: 1;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <span>Pagamento 100% seguro</span>
+                    <span id="timer">10:00</span>
+                </div>
+                <h2>Produtos</h2>
+                <div class="summary-item">
+                    <div class="product-info">
+                        <img src="https://multi.paradisepags.com/uploads/product_images/store_5694_bae0a92d17475b8e43b8a32da2b2b859.jpg" alt="Produto" class="product-logo">
+                        <span>Confirmação do pedido</span>
+                    </div>
+                    <strong>R$ 49,90</strong>
+                </div>
+                <div class="summary-item summary-total">
+                    <span>Total</span>
+                    <span>R$ 49,90</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
